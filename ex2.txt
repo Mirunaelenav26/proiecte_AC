@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+public class Student{
+    private String nume;
+    private int varsta;
+    private double[] note;
+    
+    public Student(String nume, int varsta,double[] note)
+    {
+        this.nume=nume;
+        this.varsta=varsta;
+        this.note=note;
+    }
+    
+    public double media()
+    {
+        double suma=0;
+        for(int i=0;i<note.length;i++)
+        {
+            suma=suma+note[i];
+        }
+        return suma/note.length;
+    }
+    
+    public void afisare()
+    {
+        System.out.println("Nume: "+nume);
+        System.out.println("Varsta: "+varsta);
+        System.out.println("Note: ");
+        for(int i=0;i<note.length;i++)
+        {
+            System.out.println(note[i]+" ");
+        }
+        System.out.println("Media: "+media());
+    }
+    public String getNume()
+    {
+        return nume;
+    }
+    
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Introduceti nr de studenti: ");
+        int n=sc.nextInt();
+        sc.nextLine();
+        
+        Student[] studenti=new Student[n];
+        
+        for(int i=0;i<n;i++)
+        {
+            System.out.println("Studentul "+(i+1)+": ");
+            System.out.println("Nume: ");
+            String nume=sc.nextLine();
+            
+            System.out.println("Varsta: ");
+            int varsta=sc.nextInt();
+            
+            System.out.println("Numarul de note: ");
+            int nrNote=sc.nextInt();
+            
+            double [] note=new double[nrNote];
+            
+            System.out.println("Introduceti notele: ");
+            for(int j=0;j<nrNote;j++)
+            {
+                note[j]=sc.nextDouble();
+            }
+            sc.nextLine();
+            studenti[i]=new Student(nume,varsta,note);
+        }
+        System.out.println("Informatii despre studenti: ");
+        for(int i=0;i<studenti.length;i++)
+        {
+        studenti[i].afisare();
+        }
+        
+        Student best=studenti[0];
+        for(int i=0;i<n;i++){
+            if(studenti[i].media()>best.media())
+            {
+                best=studenti[i];
+            }
+        }
+        System.out.println("Studentul cu cea mai mare medie este: "+best.getNume() +" cu media " + best.media());
+    }
+}

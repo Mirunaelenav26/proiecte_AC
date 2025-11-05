@@ -1,0 +1,98 @@
+import java.util.Scanner;
+
+public class Produs
+{
+    private String denumire;
+    private double pret;
+    private int cantitate;
+    
+    
+    public Produs(String denumire,double pret,int cantitate)
+    {
+        this.denumire=denumire;
+        this.pret=pret;
+        this.cantitate=cantitate;
+    }
+    
+    public double valoareTotala()
+    {
+        return pret*cantitate;
+    }
+    
+    public void afisareProdus()
+    {
+        System.out.println("Detaliile produsului sunt: ");
+        System.out.println("Denumire produsului este: "+denumire);
+        System.out.println("Pretul produsului este: "+pret);
+        System.out.println("Cantitatea produsului este: "+cantitate);
+        System.out.println("Valoarea totala este: "+valoareTotala());
+    }
+    
+    public double getValoareTotala()
+    {
+        return valoareTotala();
+    }
+    
+    
+    public static void main(String []args)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Introduceti numarul de linii: ");
+        int linii=sc.nextInt();
+        
+        System.out.println("Introduceti numarul de coloane: ");
+        int coloane=sc.nextInt();
+        
+        Produs[][] produse=new Produs[linii][coloane];
+        
+        System.out.println("Introduceti detaliile produselor: ");
+        for(int i=0;i<linii;i++)
+        {
+            for(int j=0;j<coloane;j++)
+            {
+                sc.nextLine();
+                System.out.println("Produs:" + "[" + (i+1) +"]" + "[" + (j+1) + "]");
+                System.out.println("Denumire: ");
+                String denumire=sc.nextLine();
+                
+                System.out.println("Pret: ");
+                double pret=sc.nextDouble();
+                
+                System.out.println("Cantitate: ");
+                int cantitate=sc.nextInt();
+                
+                produse[i][j]=new Produs(denumire,pret,cantitate); 
+            }
+        }
+        
+        System.out.println("MATRICEA PRODUSELOR: ");
+        for(int i=0;i<linii;i++)
+        {
+            double totalLinie=0;
+            System.out.println("\nLinia"+(i+1)+":");
+            for(int j=0;j<coloane;j++)
+            {
+                produse[i][j].afisareProdus();
+                totalLinie+=produse[i][j].getValoareTotala();
+            }
+            System.out.println("Total valoare pe linia"+(i+1)+"este:"+totalLinie);
+        }
+        
+        System.out.println("\nTotaluri pe coloane: ");
+        for(int j=0;j<coloane;j++)
+        {
+            double totalColoane=0;
+            for(int i=0;i<linii;i++)
+            {
+                totalColoane=produse[i][j].getValoareTotala();
+            }
+            System.out.println("Total valoare pe coloana: "+(j+1)+ " este: "+totalColoane );
+        }
+        
+        sc.close();
+        
+        
+        
+    }
+    
+    

@@ -1,0 +1,114 @@
+import java.util.Scanner;
+
+public class Matrice
+{
+    private int n;
+    private int [][] m;
+    
+    public Matrice(int n)
+    {
+        this.n=n;
+        m=new int[n][n];
+        Scanner sc=new Scanner (System.in);
+        
+        System.out.println("Introduceti elementele matricei: ");
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                while(!sc.hasNextInt())
+                {
+                    System.out.println("Valoarea invalida! Introduceti un numar intreg!");
+                    sc.next();
+                }
+                m[i][j]=sc.nextInt();
+            }
+        }
+        
+    }
+    
+    public void afisareMatrice()
+    {
+        System.out.println("Matricea introdusa este: ");
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                System.out.print(m[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+    
+    public int sumaDiagonalaPrincipala()
+    {
+        int suma=0;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(i==j)
+                    suma+=m[i][j];
+                
+            }
+        }
+        return suma;
+    }
+    
+    public int sumaDiagonalaSecundara()
+    {
+        int suma=0;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(i+j==n-1)
+                {
+                    suma+=m[i][j];
+                }
+            }
+        }
+        return suma;
+    }
+    
+    boolean esteSimetrica()
+    {
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(m[i][j]!=m[j][i]) return false;
+            }
+        }
+        return true;
+    }
+    
+    public static void main(String [] args)
+    {
+        
+        Scanner sc=new Scanner(System.in);
+        int n;
+        while(true)
+        {
+            System.out.println("Introduceti dimensiunea matricei: ");
+            if(sc.hasNextInt())
+            {
+                n=sc.nextInt();
+                if(n>0)
+                    break;
+                else
+                    System.out.println("Dimensiunea introdusa este negativa,ea trebuie sa fie pozitiva!");
+            }
+            else
+            {
+                System.out.println("Dimensiune invalida!Introduceti un numar intreg!");
+                sc.next();
+            }
+        }
+        Matrice matrice=new Matrice(n);
+        matrice.afisareMatrice();
+        System.out.println("Suma de pe diagonala principala este: "+matrice.sumaDiagonalaPrincipala());
+        System.out.println("Suma de pe diagonala secundara este: "+matrice.sumaDiagonalaSecundara());
+        System.out.println(matrice.esteSimetrica()? "Matricea este simetrica": "Matricea nu este simetrica");
+    }
+}
