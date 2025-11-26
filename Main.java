@@ -2,6 +2,20 @@ import java.util.Scanner;
 
 public class Calculator
 {
+    public static int cmmdc(operand1,operand2)
+    {
+        while(operand2!0)
+                {
+                    int aux=0;
+                    operand2=operand1%operand2;
+                    operand1=aux;
+                }
+        return operand1;
+    }
+    
+    
+    
+    
     public static void main(Strings [] args)
     {
         Scanner sc=new Scanner(System.out);
@@ -41,8 +55,11 @@ public class Calculator
             break;
             
             case "-":
-                rezultat=operand1-operand2; //daca operand2>operand1;
-                System.out.println(operand1+"-"+operand2+"="+rezultat);
+                if(operand2>operand1)
+                {
+                    rezultat=operand1-operand2; //daca operand2>operand1;
+                    System.out.println(operand1+"-"+operand2+"="+rezultat);
+                }
             break;
             
             case "*":
@@ -55,6 +72,50 @@ public class Calculator
                 System.out.println(operand1+"/"+operand2+"="+rezultat);
             break;
             
+            case "^":
+                rezultat=Math.pow(operand1.operand2);
+                System.out.println(operand1+"^"+operand2+"="+rezultat);
+            break;
+            
+            case "min":
+                if(operand1<operand2) System.out.println("Minimul dintre cele doua numere este: "+operand1);
+                else if(operand1>operand2) System.out.println("Minimul dintre cele doua numere este:  "+operand2);
+            break;
+            
+            case "max":
+                if(operand1>operand2) System.out.println("Maximul dintre cele doua numere este: "+operand1);
+                else if(operand1<operand2) System.out.println("Maximul dintre cele doua numere este:  "+operand2);
+            break;
+            
+            case "d":
+                System.out.println("Cel mai mare divizor comun al celor doua numere este: "+cmmdc(operand1.operand2));
+            break;
+            
+            case "m":
+                System.out.println("Cel mai mic multiplu comun al celor doua numere este: "+(operand1*operand2)/cmmdc(operand1,operand2));
+            break;
+            
+            case "b":
+                System.out.println("Primul numar, transformat din baza 10 in baza 2 este:"+ Integer.toBinaryString(operand1,2));
+                System.out.println("Al doilea  numar, transformat din baza 10 in baza 2 este:"+ Integer.toBinaryString(operand2,2));
+            break;
+            
+            case "o":
+                System.out.println("Primul numar, transformat din baza 10 in baza 8 este:"+ Integer.toString(operand1,8)));
+                System.out.println("Al doilea  numar, transformat din baza 10 in baza 8 este:"+ Integer.toString(operand2,8));
+            break;
+            
+            case "h":
+                System.out.println("Primul numar, transformat din baza 10 in baza 16 este:"+ Integer.toString(operand1,16)));
+                System.out.println("Al doilea  numar, transformat din baza 10 in baza 16 este:"+ Integer.toString(operand2,16));
+            break;
+            
+            
+        
+            
+            
+                
+                
             
             
             
