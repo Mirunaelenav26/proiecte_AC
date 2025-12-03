@@ -1,0 +1,148 @@
+import java.util.Scanner;
+
+
+public class Calculator
+{
+    public static double cmmdc(double operand1,double operand2)
+    {
+        while(operand2!=0)
+                {
+                    int aux=0;
+                    operand2=operand1%operand2;
+                    operand1=aux;
+                }
+        return operand1;
+    }
+    
+    
+    
+    
+    public static void main(String [] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        double operand1,operand2,rezultat;
+        String operator;
+        System.out.println("Introdu primul numar: ");
+        operand1=sc.nextDouble();
+        
+        
+        System.out.println("Alege operatia dorita:");
+        
+        System.out.println("Adunare: +");
+        System.out.println("Scadere: -");
+        System.out.println("Inmultire: *");
+        System.out.println("Impartire: /");
+        System.out.println("Putere : ^");
+        System.out.println("Minimul dintre cele 2 numere: min");
+        System.out.println("Maximul dintre cele 2 numere: max");
+        System.out.println("Calcul cmmdc: d");
+        System.out.println("Calcul cmmmc: m");
+        //System.out.println("Transformare din baza 10 in baza 2: b"); daca se alege asta se alege apoi si o operatie aritmetica
+        //System.out.println("Transformare din baza 10 in baza 8: o");la fel si aici
+        //System.out.println("Transformare din baza 10 in baza 16: h");x3
+        //System.out.println("Logaritm in baza operand1 din operand2: l");
+        //merge si logaritm in baza op1 din operand2
+        //poate un while ca sa faca mai multe calcule si sa se opreaste cand introduce un cuvant cheie 
+        //daca nr au mai mult de 2 cifre sa se inlocuiasca prima cifra a primului cu ultima cifra a celui d al doilea si tot asa de la i+1 pana la n-1 
+        
+        
+        operator=sc.next();
+        
+     
+        
+       System.out.println("Introdu al doilea numar: ");
+        operand2=sc.nextDouble();
+        
+        switch(operator)
+        {
+            case "+":
+                rezultat=operand1+operand2;
+                System.out.println(operand1+ "+"+operand2+"="+rezultat);
+            break;
+            
+            case "-":
+                if(operand2>operand1)
+                {
+                    rezultat=operand1-operand2; 
+                    System.out.println(operand1+"-"+operand2+"="+rezultat);
+                }
+            break;
+            
+            case "*":
+                rezultat=operand1*operand2;
+                System.out.println(operand1+"*"+operand2+"="+rezultat);
+            break;
+            
+            case "/":
+                rezultat=operand1/operand2;
+                System.out.println(operand1+"/"+operand2+"="+rezultat);
+            break;
+            
+            case "^":
+                rezultat=Math.pow(operand1,operand2);
+                System.out.println(operand1+"^"+operand2+"="+rezultat);
+            break;
+            
+            case "min":
+                if(operand1<operand2) System.out.println("Minimul dintre cele doua numere este: "+operand1);
+                else if(operand1>operand2) System.out.println("Minimul dintre cele doua numere este:  "+operand2);
+            break;
+            
+            case "max":
+                if(operand1>operand2) System.out.println("Maximul dintre cele doua numere este: "+operand1);
+                else if(operand1<operand2) System.out.println("Maximul dintre cele doua numere este:  "+operand2);
+            break;
+            
+            case "d":
+                System.out.println("Cel mai mare divizor comun al celor doua numere este: "+cmmdc(operand1,operand2));
+            break;
+            
+            case "m":
+                System.out.println("Cel mai mic multiplu comun al celor doua numere este: "+(operand1*operand2)/cmmdc(operand1,operand2));
+            break;
+            
+            /*case "b":
+                long bits = Double.doubleToLongBits(operand1);
+                String reprBin = Long.toBinaryString(bits);
+                System.out.println("Primul numar, transformat din baza 10 in baza 2 este:"+reprBin);
+               // System.out.println("Al doilea  numar, transformat din baza 10 in baza 2 este:"+ Double.toBinaryString(operand2,2));
+            break;
+            
+            case "o":
+                System.out.println("Primul numar, transformat din baza 10 in baza 8 este:"+ Double.toString(operand1,8));
+                System.out.println("Al doilea  numar, transformat din baza 10 in baza 8 este:"+ Double.toString(operand2,8));
+            break;
+            
+            case "h":
+                System.out.println("Primul numar, transformat din baza 10 in baza 16 este:"+ Double.toString(operand1,16));
+                System.out.println("Al doilea  numar, transformat din baza 10 in baza 16 este:"+ Double.toString(operand2,16));
+            break;
+            */
+            case "l":
+                double lg=Math.log(operand2)/Math.log(operand1);
+                System.out.println("Logaritm in baza  "+operand1+" din " + operand2 +" este: "+lg);
+            break;
+        
+            
+            
+                
+                
+            
+            
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        //la sf sa fac o matrice speciala plecand de la cele 2 numere!
+        //Sl. dr. ing. Oana Flangea 
+        //drd. ing. Olteanu Gabriela
+        
+    }
+}
